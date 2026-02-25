@@ -1,0 +1,76 @@
+/* Header Container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  color: #00d4ff;
+}
+
+/* Search Box */
+.search {
+  width: 350px;
+  padding: 8px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.search:focus {
+  box-shadow: 0 0 8px #00d4ff;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Category Items */
+.nav-links span {
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+  text-transform: capitalize;
+}
+
+.nav-links span:hover {
+  color: #00d4ff;
+  transform: translateY(-2px);
+}
+
+/* Username Style */
+.nav-links span:nth-last-child(2) {
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Logout Button */
+.nav-links span:last-child {
+  color: #ff4d4d;
+}
+
+.nav-links span:last-child:hover {
+  color: #ff1a1a;
+}
