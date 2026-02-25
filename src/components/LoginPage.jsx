@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 const users = [
   { username: "admin", password: "1234" },
@@ -9,7 +9,7 @@ const users = [
   { username: "2500031371", password: "simhadhar" }
 ];
 
-const Login = ({ setIsAuthenticated }) => {
+const LoginPage = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,14 +20,16 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
 
     const validUser = users.find(
-      (user) => user.username === username && user.password === password
+      (user) =>
+        user.username === username.trim() &&
+        user.password === password.trim()
     );
 
     if (validUser) {
       localStorage.setItem("auth", "true");
       localStorage.setItem("user", username);
       setIsAuthenticated(true);
-      navigate("/");
+      navigate("/home");
     } else {
       setError("Invalid Credentials");
     }
@@ -36,7 +38,7 @@ const Login = ({ setIsAuthenticated }) => {
   return (
     <div className="login-container">
       <form className="login-box" onSubmit={handleLogin}>
-        <h2>SSC LOGIN 🛒</h2>
+        <h2>SHOPMART LOGIN 🛒</h2>
 
         <input
           type="text"
@@ -55,13 +57,9 @@ const Login = ({ setIsAuthenticated }) => {
         {error && <p className="error">{error}</p>}
 
         <button type="submit">Login</button>
-
-        <p>
-          Created by P.Chaithanya Raj, M.Satyanarayana, J.Simhadhar
-        </p>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;

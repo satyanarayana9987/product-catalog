@@ -1,14 +1,36 @@
-import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
-import ProductDetailPage from "./pages/ProductDetailPage.jsx";
-import LoginPage from "./components/LoginPage.jsx";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
+import LoginPage from "./components/LoginPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("auth") === "true"
+  );
+
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/product/:id" element={<ProductDetailPage />} />
-      <Route path="/home" element={<HomePage />} />
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? (
+            <Navigate to="/home" />
+          ) : (
+            <LoginPage setIsAuthenticated={setIsAuthenticated} />
+          )
+        }
+      />
+
+      <Route
+        path="/home"
+        element={
+          isAuthenticated ? (
+            <HomePage />
+          ) : (
+            <Navigate to="/" />
+          )
+        }
+      />
     </Routes>
   );
 }
