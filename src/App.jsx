@@ -6,9 +6,9 @@ import LoginPage from "./components/LoginPage.jsx";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<LoginPage />} />
       <Route path="/product/:id" element={<ProductDetailPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/home" element={<HomePage />} />
     </Routes>
   );
 }
