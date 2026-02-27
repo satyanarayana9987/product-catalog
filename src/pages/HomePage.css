@@ -4,3 +4,8 @@
   gap: 20px;
   padding: 40px;
 }
+.footer
+{
+  text-align: center;
+  background: linear-gradient(135deg, #1c333d, #337085, #52beec);
+}

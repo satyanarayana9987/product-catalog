@@ -24,41 +24,51 @@ export default function ProductDetailPage() {
   if (loading) return <Loader />;
 
   return (
-  <>
-    <Header />
+    <>
+      <Header />
 
-    <div className="product-detail">
-      <button className="back-btn" onClick={() => navigate(-1)}>
-        ← Back
-      </button>
+      <div className="product-page">
+        <button className="back-btn" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
 
-      <div className="detail-content">
-        {/* Left Image */}
-        <div className="image-section">
-          <img src={product.image} alt={product.title} />
+        <div className="product-container">
+          
+          {/* LEFT - Image */}
+          <div className="left-section">
+            <img src={product.image} alt={product.title} />
+          </div>
+
+          {/* CENTER - Product Info */}
+          <div className="center-section">
+            <h2 className="title">{product.title}</h2>
+
+            <div className="rating">
+              ⭐ {product.rating?.rate} ({product.rating?.count} reviews)
+            </div>
+
+            <hr />
+
+            <h3 className="price">₹ {product.price}</h3>
+
+            <p className="description">{product.description}</p>
+
+            <p className="category">
+              <b>Category:</b> {product.category}
+            </p>
+          </div>
+
+          {/* RIGHT - Purchase Box */}
+          <div className="right-section">
+            <h3 className="price">₹ {product.price}</h3>
+            <p className="stock">In Stock</p>
+
+            <button className="cart-btn">Add to Cart</button>
+            <button className="buy-btn">Buy Now</button>
+          </div>
         </div>
-
-        {/* Right Info */}
-        <div className="info-section">
-          <h2>{product.title}</h2>
-
-          <p className="rating">
-            ⭐ {product.rating?.rate} ({product.rating?.count} reviews)
-          </p>
-
-          <h3 className="price">₹ {product.price}</h3>
-
-          <p className="description">{product.description}</p>
-
-          <p className="category">
-            <b>Category:</b> {product.category}
-          </p>
-
-          <button className="cart-btn">Add to Cart</button>
-          <button className="buy-btn">Buy Now</button>
-        </div>
+             <div className="footer"><h1>Created by TEAM-CSS</h1></div>
       </div>
-    </div>
-  </>
+    </>
   );
 }

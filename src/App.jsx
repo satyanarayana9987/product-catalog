@@ -1,7 +1,8 @@
+import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
-import LoginPage from "./components/LoginPage";
 import HomePage from "./pages/HomePage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import LoginPage from "./pages/LoginPage"; 
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -13,24 +14,21 @@ function App() {
       <Route
         path="/"
         element={
-          isAuthenticated ? (
-            <Navigate to="/home" />
-          ) : (
-            <LoginPage setIsAuthenticated={setIsAuthenticated} />
-          )
+          isAuthenticated ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />
         }
       />
 
       <Route
         path="/home"
-        element={
-          isAuthenticated ? (
-            <HomePage />
-          ) : (
-            <Navigate to="/" />
-          )
-        }
+        element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}
       />
+
+      <Route
+        path="/product/:id"
+        element={isAuthenticated ? <ProductDetailPage /> : <Navigate to="/login" />}
+      />
+
+      <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
     </Routes>
   );
 }

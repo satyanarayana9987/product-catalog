@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getCategories } from "../services/api";
 import "./Header.css";
 
 export default function Header({ onSearch, onCategorySelect }) {
   const [categories, setCategories] = useState([]);
   const user = localStorage.getItem("user");
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCategories() {
@@ -18,12 +19,12 @@ export default function Header({ onSearch, onCategorySelect }) {
   const handleLogout = () => {
     localStorage.removeItem("auth");
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (
     <header className="header">
-      <Link to="/" className="logo">ShopMart</Link>
+      <Link to="/" className="logo">KL-CATALOG</Link>
 
       {/* Search */}
       <input

@@ -1,17 +1,16 @@
-/* Header Container */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(135deg, #1c333d, #337085, #52beec);
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* Logo */
 .logo {
   font-size: 24px;
   font-weight: bold;
@@ -25,7 +24,7 @@
   color: #00d4ff;
 }
 
-/* Search Box */
+
 .search {
   width: 350px;
   padding: 8px 15px;
@@ -40,14 +39,14 @@
   box-shadow: 0 0 8px #00d4ff;
 }
 
-/* Navigation Links */
+
 .nav-links {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-/* Category Items */
+
 .nav-links span {
   cursor: pointer;
   font-size: 14px;
@@ -60,13 +59,12 @@
   transform: translateY(-2px);
 }
 
-/* Username Style */
 .nav-links span:nth-last-child(2) {
   font-weight: bold;
   color: #ffd700;
 }
 
-/* Logout Button */
+
 .nav-links span:last-child {
   color: #ff4d4d;
 }

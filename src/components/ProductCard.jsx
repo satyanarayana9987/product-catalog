@@ -3,7 +3,6 @@ import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
-
   return (
     <div
       className="product-card"

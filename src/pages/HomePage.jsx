@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllProducts, getProductsByCategory } from "../services/api";
 import ProductCard from "../components/ProductCard.jsx";
 import Header from "../components/Header.jsx";
-import HeroBanner from "../components/HeroBanner.jsx";
+import HeroBanner from "../components/Banner.jsx";
 import Loader from "../components/Loader.jsx";
 import "./HomePage.css";
 
@@ -54,6 +54,7 @@ export default function HomePage() {
           <p>No products found</p>
         )}
       </div>
+       <div className="footer"><h1>Created by TEAM-CSS</h1></div>
     </>
   );
 }

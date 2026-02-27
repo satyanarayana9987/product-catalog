@@ -1,44 +1,51 @@
-.product-detail {
+.product-page {
   padding: 40px;
-  background: linear-gradient(to right, #3f4c6b, #606c88);
+  background: #779f99;
   min-height: 100vh;
 }
 
 .back-btn {
-  background: white;
-  border: 1px solid #ddd;
-  padding: 6px 14px;
-  cursor: pointer;
-  margin-bottom: 20px;
+  background-color: #ae0b0b;  
+  color: white;
+  border: none;               
+  padding: 8px 16px;          
+  border-radius: 4px;       
+  font-size: 14px;            
+  cursor: pointer;            
+  transition: background 0.2s; 
 }
 
-.detail-content {
+.back-btn:hover {
+  background-color: #c32929;   
+}
+
+.product-container {
   display: flex;
-  gap: 50px;
+  gap: 40px;
   background: white;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Image */
-.image-section {
+
+.left-section {
   flex: 1;
   text-align: center;
 }
 
-.image-section img {
+.left-section img {
   width: 350px;
   height: 400px;
   object-fit: contain;
 }
 
-/* Info */
-.info-section {
+
+.center-section {
   flex: 2;
 }
 
-.info-section h2 {
+.title {
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -51,7 +58,7 @@
 .price {
   font-size: 26px;
   color: #b12704;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .description {
@@ -61,25 +68,42 @@
 }
 
 .category {
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
-/* Buttons */
+
+.right-section {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.stock {
+  color: green;
+  margin-bottom: 15px;
+}
+
 .cart-btn {
+  width: 100%;
   background: #ffd814;
   border: none;
-  padding: 10px 20px;
-  margin-right: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 .buy-btn {
+  width: 100%;
   background: #ffa41c;
   border: none;
-  padding: 10px 20px;
+  padding: 10px;
   cursor: pointer;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 .cart-btn:hover {
@@ -88,4 +112,9 @@
 
 .buy-btn:hover {
   background: #fa8900;
+}
+.footer
+{
+  text-align: center;
+  background: linear-gradient(135deg, #1c333d, #337085, #52beec);
 }
