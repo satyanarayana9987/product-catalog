@@ -1,0 +1,12 @@
+.footer {
+  background: var(--nav-bg);
+  color: var(--on-dark);
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer h1 {
+  margin: 0;
+  font-size: 18px;
+}

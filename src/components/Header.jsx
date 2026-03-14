@@ -1,17 +1,33 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getCategories } from "../services/api";
+import SearchBar from "./SearchBar";
+import CategoryMenu from "./CategoryMenu";
+import { useCart } from "../context/cart.jsx";
 import "./Header.css";
 
-export default function Header({ onSearch, onCategorySelect }) {
+export default function Header({
+  searchText = "",
+  onSearch = () => {},
+  selectedCategory = "all",
+  onCategorySelect = () => {},
+}) {
+
   const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(null);
   const user = localStorage.getItem("user");
   const navigate = useNavigate();
+  const { itemCount } = useCart();
 
   useEffect(() => {
     async function fetchCategories() {
-      const data = await getCategories();
-      setCategories(data);
+      try {
+        const data = await getCategories();
+        setCategories(data);
+      } catch (err) {
+        console.error("Error fetching categories:", err);
+        setError("Failed to load categories");
+      }
     }
     fetchCategories();
   }, []);
@@ -24,40 +40,53 @@ export default function Header({ onSearch, onCategorySelect }) {
 
   return (
     <header className="header">
-      <Link to="/" className="logo">KL-CATALOG</Link>
 
-      {/* Search */}
-      <input
-        className="search"
-        placeholder="Search products..."
-        onChange={(e) => onSearch && onSearch(e.target.value)}
-      />
+      <div className="header-top">
 
-      {/* Categories */}
-      <div className="nav-links">
-        <span onClick={() => onCategorySelect && onCategorySelect("all")}>
-          All
-        </span>
+        <Link to="/" className="logo">
+          KL<span>-CATALOG</span>
+        </Link>
 
-        {categories.map((cat) => (
-          <span
-            key={cat}
-            onClick={() => onCategorySelect && onCategorySelect(cat)}
-          >
-            {cat}
-          </span>
-        ))}
+        <div className="header-search">
+          <SearchBar value={searchText} onChange={onSearch} />
+          {user && (
+            <button
+              type="button"
+              className="cart-icon-btn"
+              onClick={() => navigate("/cart")}
+              aria-label="Open cart"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="cart-icon">
+                <path d="M6.3 6.3h15l-1.4 7.1a2 2 0 0 1-2 1.6H8.1a2 2 0 0 1-2-1.6L4.5 3.8H2.8a1 1 0 1 1 0-2h2.5a1 1 0 0 1 1 .8l1 3.7Zm2.6 16.2a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" />
+              </svg>
+              {itemCount > 0 ? <span className="cart-badge">{itemCount}</span> : null}
+            </button>
+          )}
+        </div>
 
-        {/* User Info */}
-        {user && <span>{user}</span>}
-
-        {/* Logout */}
         {user && (
-          <span onClick={handleLogout} style={{ cursor: "pointer" }}>
-            Logout
-          </span>
+          <div className="user-actions">
+            <span className="username">{user}</span>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
         )}
+
       </div>
+
+      <div className="header-bottom">
+
+        {error && <p className="error">{error}</p>}
+
+        <CategoryMenu
+          categories={categories}
+          selected={selectedCategory}
+          onSelect={onCategorySelect}
+        />
+
+      </div>
+
     </header>
   );
 }

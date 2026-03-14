@@ -1,10 +1,48 @@
+
+:root {
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --surface-2: #f2f4f7;
+  --text: #0f1111;
+  --muted: #565959;
+  --border: #d5d9d9;
+
+  --brand-800: #1c333d;
+  --brand-700: #337085;
+  --brand-500: #52beec;
+  --brand-gradient: linear-gradient(
+    135deg,
+    var(--brand-800),
+    var(--brand-700),
+    var(--brand-500)
+  );
+
+  --nav-bg: #131921;
+  --on-dark: #ffffff;
+
+  --accent-400: #ffd814;
+  --accent-500: #ff9900;
+  --accent-600: #e68a00;
+
+  --danger-500: #ff4d4d;
+  --danger-600: #ff1a1a;
+
+  --price: #b12704;
+  --success-600: #067d62;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background-color: #f3f3f3;
+  margin: 0;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
