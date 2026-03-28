@@ -90,3 +90,4 @@ export default function Header({
     </header>
   );
 }
+// Improved by Chaithanya: minor readability update
