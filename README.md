@@ -17,3 +17,5 @@ If you are developing a production application, we recommend using TypeScript wi
 Contributed by Chaithanya
 ## Contributors
 - Chaithanya Raj Peddireddy
+- satya
+-simhadhar
